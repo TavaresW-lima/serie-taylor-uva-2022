@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 const double PI = 3.1415926535897932384626433832795;
 
@@ -28,9 +29,17 @@ double getSeno(double angulo, int iteracoes) {
 }
 
 int main(int argc, char const *argv[]) {
+
+    clock_t inicio = clock();
     
     double radiano = getRadiano(atof(argv[1]), atof(argv[2]), atof(argv[3]));
     double seno = getSeno(radiano, atoi(argv[4]));
+
+    clock_t fim = clock();
+
+    double tempo_decorrido = (double)(fim - inicio) / CLOCKS_PER_SEC;
+	
+	printf("Tempo Decorrido: %f", tempo_decorrido);
 
     return 0;
 }
