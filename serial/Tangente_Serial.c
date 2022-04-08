@@ -14,7 +14,6 @@ long fatorial(int valor) {
 
 double getRadiano(float angulo, float minutos, float segundos) {
     double radiano = angulo + (minutos/60.0) + (segundos/3600.0);
-    printf("O radiano é %f", radiano);
     return radiano * (PI/180.0);
 }
 
