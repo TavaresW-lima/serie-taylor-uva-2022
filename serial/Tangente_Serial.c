@@ -28,6 +28,21 @@ double getSeno(double angulo, int iteracoes) {
     return seno;
 }
 
+double getCosseno(double angulo, int iteracoes) {
+    int i, sinal = 1;
+    double cosseno = 0;
+    for(i = 0; i <= iteracoes; i += 2) {
+        cosseno = cosseno + ( (pow(angulo, i)/fatorial(i)) * sinal );
+        sinal = sinal * -1;
+    }
+    return cosseno;
+}
+
+double getTangente(double seno, double cosseno) {
+    double tangente =  0;
+    return tangente = seno/cosseno;
+}
+
 int main(int argc, char const *argv[]) {
 
     clock_t inicio = clock();
