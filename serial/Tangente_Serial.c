@@ -6,7 +6,7 @@
 const double PI = 3.1415926535897932384626433832795;
 
 long fatorial(int valor) {
-    if(valor == 1) {
+    if(valor == 1 || valor == 0) {
         return 1;
     } else {
         return fatorial(valor-1) * valor;
@@ -44,17 +44,24 @@ double getTangente(double seno, double cosseno) {
 }
 
 int main(int argc, char const *argv[]) {
+    float graus = atof(argv[1]), minutos = atof(argv[2]), segundos = atof(argv[3]);
+    int iteracoes = atoi(argv[4]);
 
     clock_t inicio = clock();
     
-    double radiano = getRadiano(atof(argv[1]), atof(argv[2]), atof(argv[3]));
-    double seno = getSeno(radiano, atoi(argv[4]));
+    double radiano = getRadiano(graus, minutos, segundos);
+    double seno = getSeno(radiano, iteracoes);
+    double cosseno = getCosseno(radiano, iteracoes);
+    double tangente = getTangente(seno, cosseno);
 
     clock_t fim = clock();
-
     double tempo_decorrido = (double)(fim - inicio) / CLOCKS_PER_SEC;
-	
-	printf("Tempo Decorrido: %f", tempo_decorrido);
+    
+    printf("Resultados - %d Iterações ---------\n", iteracoes);
+    printf("Seno:\t\t\t%.20f\n", seno);
+    printf("Cosseno:\t\t%.20f\n", cosseno);
+    printf("Tangente:\t\t%.20f\n", tangente);
+	printf("Tempo Decorrido:\t%.8f segundos", tempo_decorrido);
 
     return 0;
 }
